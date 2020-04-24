@@ -1,10 +1,14 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
-import { remote } from 'electron'
-//const { present, unPresent } = window.require('electron').remote.require('./present')
-//
-function present() {}
+
+const { present, unPresent } = require('electron').remote.require('./present.js')
+
+function testPresent () {
+  console.log('hi')
+  console.log(present)
+  present()
+}
 
 function App() {
   return (
@@ -14,7 +18,7 @@ function App() {
         <p>
           Edit <code>src/App.js</code> and save to reload.
         </p>
-        <button className="App-link" onClick={ present }>
+        <button className="App-link" onClick={ testPresent }>
           Present
         </button>
       </header>
