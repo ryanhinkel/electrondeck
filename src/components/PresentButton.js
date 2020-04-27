@@ -1,19 +1,20 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 import hostApi from '../services/hostApi'
 
-const { setScreenMode, EDIT_MODE, PRESENT_MODE } = hostApi
+const { EDIT_MODE, PRESENT_MODE } = hostApi
 
 function PresentButton() {
-  const [screenMode, setScreenModeLocal] = useState(EDIT_MODE);
+  const [screenMode, setScreenMode] = useState(EDIT_MODE);
+  useEffect(() => {
+    hostApi.setScreenMode(screenMode);
+  }, [screenMode])
 
   const togglePresent = () => {
     if (screenMode === EDIT_MODE) {
       setScreenMode(PRESENT_MODE);
-      setScreenModeLocal(PRESENT_MODE);
     } else {
       setScreenMode(EDIT_MODE);
-      setScreenModeLocal(EDIT_MODE);
     }
   };
 
