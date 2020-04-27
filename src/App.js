@@ -1,10 +1,12 @@
 import React from "react";
 
+import PresentButton from "./components/PresentButton"
+
 function App() {
   return (
     <div className="app">
       <header>
-        <button>Present</button>
+        <PresentButton />
       </header>
     </div>
   );
