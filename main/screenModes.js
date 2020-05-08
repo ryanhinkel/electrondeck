@@ -1,9 +1,15 @@
+const { getWindow } = require('./index')
+
 function setPresentMode () {
-  console.log('presenting')
+  const win = getWindow()
+  win.maximize()
+  win.setFullScreen(true)
 }
 
 function setEditMode () {
-  console.log('editing')
+  const win = getWindow()
+  win.setFullScreen(false)
+  win.unmaximize()
 }
 
 module.exports = {

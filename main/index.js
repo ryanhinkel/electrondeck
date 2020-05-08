@@ -1,7 +1,9 @@
-const {app, BrowserWindow} = require('electron')
+const { app, BrowserWindow } = require('electron')
+
+let mainWindow
 
 function createWindow () {
-  const mainWindow = new BrowserWindow({
+  mainWindow = new BrowserWindow({
     width: 800,
     height: 600,
     webPreferences: { nodeIntegration: true }
@@ -9,6 +11,10 @@ function createWindow () {
 
   mainWindow.loadURL('http://localhost:3000')
   mainWindow.webContents.openDevTools()
+}
+
+function getWindow () {
+  return mainWindow
 }
 
 app.whenReady().then(createWindow)
@@ -21,3 +27,6 @@ app.on('activate', function () {
   if (BrowserWindow.getAllWindows().length === 0) createWindow()
 })
 
+module.exports = {
+  getWindow,
+}
