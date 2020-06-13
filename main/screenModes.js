@@ -1,18 +1,15 @@
-const { getWindow } = require('./index')
+const { loadPresentWindows, loadEditWindows } = require('./display')
+const { store } = require('./redux/store')
 
-function setPresentMode () {
-  const win = getWindow()
-  win.maximize()
-  win.setFullScreen(true)
-}
-
-function setEditMode () {
-  const win = getWindow()
-  win.setFullScreen(false)
-  win.unmaximize()
+function toggleScreenMode () {
+  const presenting = store.getState()
+  if (presenting) {
+    // loadEditWindows()
+  } else {
+    // loadPresentWindows()
+  }
 }
 
 module.exports = {
-  setPresentMode,
-  setEditMode,
+  toggleScreenMode,
 }
